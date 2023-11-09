@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:24:44 by jhesso            #+#    #+#             */
-/*   Updated: 2023/11/08 17:03:51 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:23:11 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,34 +72,34 @@ static bool	check_chars(t_map_data *data, int row, int col, bool p_start)
 	return (true);
 }
 
-static bool	check_first_and_last(char **map)
-{
-	int		row;
-	int		col;
-	char	c;
+// static bool	check_first_and_last(char **map)
+// {
+// 	int		row;
+// 	int		col;
+// 	char	c;
 
-	row = 0;
-	col = 0;
-	while (map[row][col])
-	{
-		c = map[row][col];
-		if (c != '1' && c != ' ')
-			return (false);
-		col++;
-	}
-	while (map[row + 1])
-		row++;
-	row--;
-	col = 0;
-	while (map[row][col])
-	{
-		c = map[row][col];
-		if (c != '1' && c != ' ')
-			return (false);
-		col++;
-	}
-	return (true);
-}
+// 	row = 0;
+// 	col = 0;
+// 	while (map[row][col])
+// 	{
+// 		c = map[row][col];
+// 		if (c != '1' && c != ' ')
+// 			return (false);
+// 		col++;
+// 	}
+// 	while (map[row + 1])
+// 		row++;
+// 	row--;
+// 	col = 0;
+// 	while (map[row][col])
+// 	{
+// 		c = map[row][col];
+// 		if (c != '1' && c != ' ')
+// 			return (false);
+// 		col++;
+// 	}
+// 	return (true);
+// }
 
 static bool	flood_fill(char **map, t_vector pos, bool *stop)
 {
@@ -121,14 +121,44 @@ static bool	flood_fill(char **map, t_vector pos, bool *stop)
 	return (false);
 }
 
+static size_t get_longest_line(char **map)
+{
+	size_t	i;
+	size_t line_l;
+	size_t len;
+
+	i = 0;
+	len = 0;
+	while (map[i])
+	{
+		line_l = ft_strlen(map[i]);
+		if (ft_strlen(map[i]) > len)
+			len = line_l;
+		i++;
+	}
+	return (len);
+}
+
+static size_t get_map_size(char **map)
+{
+	size_t	i;
+
+	i = 0;
+	while (map[i] && map[i][0] != '\0')
+		i++;
+	return (i);
+}
+
 static bool	check_walls(t_map_data *data, bool stop)
 {
 	char		**tmp_map;
 	t_vector	last_point;
 	t_vector	point;
 
-	if (!check_first_and_last(data->map))
-		return (false);
+	// if (!check_first_and_last(data->map))
+	// 	return (false);
+	data->longest_line = get_longest_line(data->map); //change it later and initialize;
+	data->map_size = get_map_size(data->map); //change it later and initialize;
 	remove_newline(data->map);
 	tmp_map = duplicate_map(data->map);
 	last_point = get_last_point(tmp_map);

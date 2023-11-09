@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moving.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:38:33 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/08 17:22:06 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/11/09 12:33:29 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	move_left(t_map_data *data)
 	float	x;
 	float	y;
 
-	x = data->dir.y * 0.5;
-	y = -data->dir.x * 0.5;
+	x = data->dir.y * 0.8;
+	y = -data->dir.x * 0.8;
 	data->pos.x = data->pos.x + x;
 	data->pos.y = data->pos.y + y;
 }
@@ -28,8 +28,8 @@ static void	move_right(t_map_data *data)
 	float	x;
 	float	y;
 
-	x = -data->dir.y * 0.5;
-	y = data->dir.x * 0.5;
+	x = -data->dir.y * 0.8;
+	y = data->dir.x * 0.8;
 	data->pos.x = data->pos.x + x;
 	data->pos.y = data->pos.y + y;
 }
@@ -39,8 +39,8 @@ static void	move_down(t_map_data *data)
 	float	x;
 	float	y;
 
-	x = data->pos.x - data->dir.x * 0.5;
-	y = data->pos.y - data->dir.y * 0.5;
+	x = data->pos.x - data->dir.x * 0.8;
+	y = data->pos.y - data->dir.y * 0.8;
 	data->pos.x = x;
 	data->pos.y = y;
 }
@@ -50,8 +50,8 @@ static void	move_up(t_map_data *data)
 	float	x;
 	float	y;
 
-	x = data->pos.x + data->dir.x * 0.5;
-	y = data->pos.y + data->dir.y * 0.5;
+	x = data->pos.x + data->dir.x * 0.8;
+	y = data->pos.y + data->dir.y * 0.8;
 	data->pos.x = x;
 	data->pos.y = y;
 }

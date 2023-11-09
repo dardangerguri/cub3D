@@ -6,7 +6,7 @@
 /*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:40:17 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/10/21 16:40:48 by dgerguri         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:33:21 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,66 @@ static void	draw_blocks(t_map_data *data, int x, int y, uint32_t color)
 	}
 }
 
+static void	get_top_left_y_and_x(t_map_data *data, int *y, int *x, int type)
+{
+	if (type == 1)
+	{
+		*y = 0;
+		if (data->map_size - 33 / 2 > 0)
+		{
+			if (g->components.rows - g->components.player_pos.y > 32 / 2)
+				*y = g->components.player_pos.y - 33 / 2;
+			else
+				*y = g->components.rows - 33;
+		}
+	}
+	else if (type == 2)
+	{
+		if (g->components.player_pos.x - 60 / 2 > 0)
+		{
+			if (g->components.columns - g->components.player_pos.x > 60 / 2)
+				*x = g->components.player_pos.x - 60 / 2;
+			else
+			{
+				*x = g->components.columns - 60;
+				if (*x < 0)
+					*x = 0;
+			}
+		}
+	}
+}
+
+void draw_map_long(t_map_data *data, int row, int column, int x)
+{
+	int y;
+	uint32_t color;
+
+	get_top_left_y_and_x(data, &y, 0, 1);
+	while (y < data->map_size)
+	{
+		// column = 0;
+		x = 0;
+		get_top_left_y_and_x(data, 0, &x, 2);
+		while ((size_t)x < data->longest_line)
+		{
+				if (x < (int)ft_strlen(data->map[y]) && data->map[y][x] == '1')
+					color = 0x808080;
+				else if (x < (int)ft_strlen(data->map[y]) \
+					&& (data->map[y][x] == '0' || (data->map[y][x] != ' ' \
+					&& ft_strrchr("NSWE", data->map[y][x]))))
+					color = 0x0000FF;
+				else
+					color = 0x000000;
+				draw_blocks(data, x * SIZE_B, y * SIZE_B, color);
+			x++;
+		}
+		row++;
+		y++;
+	}
+	return (1);
+}
+
+
 void	draw_map(t_map_data *data)
 {
 	int x;
@@ -37,23 +97,29 @@ void	draw_map(t_map_data *data)
 	uint32_t color;
 
 	y = 0;
-	while (data->map[y] && (y * SIZE_B) < HEIGHT_W)
+	if (data->longest_line > 10 || data->map_size > 5)
+		draw_map_long(data);
+		// printf("helo");
+	else
 	{
-		x = 0;
-		while (data->map[y][x] && (x * SIZE_B) < WIDTH_W)
+		while (data->map[y] && (y * SIZE_B) < HEIGHT_W)
 		{
-			if (x < (int)ft_strlen(data->map[y]) && data->map[y][x] == '1')
-				color = 0x808080;
-			else if (x < (int)ft_strlen(data->map[y]) \
-				&& (data->map[y][x] == '0' || (data->map[y][x] != ' ' \
-				&& ft_strrchr("NSWE", data->map[y][x]))))
-				color = 0x0000FF;
-			else
-				color = 0x000000;
-			draw_blocks(data, x * SIZE_B, y * SIZE_B, color);
-			x++;
+			x = 0;
+			while (data->map[y][x] && (x * SIZE_B) < WIDTH_W)
+			{
+				if (x < (int)ft_strlen(data->map[y]) && data->map[y][x] == '1')
+					color = 0x808080;
+				else if (x < (int)ft_strlen(data->map[y]) \
+					&& (data->map[y][x] == '0' || (data->map[y][x] != ' ' \
+					&& ft_strrchr("NSWE", data->map[y][x]))))
+					color = 0x0000FF;
+				else
+					color = 0x000000;
+				draw_blocks(data, x * SIZE_B, y * SIZE_B, color);
+				x++;
+			}
+			y++;
 		}
-		y++;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:02:23 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/08 22:14:10 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/11/09 15:23:18 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define SIZE_P 5 // Size of player?
 # define PI 3.141592
 # define RAD 0.0174533
-# define PROJ_H 770
-# define PROJ_V 1370
+# define PROJ_H 1080
+# define PROJ_V 1490
 
 /******************************************************************************/
 /*								Error Messages	 							  */
@@ -141,6 +141,8 @@ typedef struct s_map_data
 	char		**map;
 	int			map_w;
 	int			map_h;
+	size_t		longest_line; //change name
+	size_t		map_size;	//change name
 	t_mlx_data	*mlx_data;
 }				t_map_data;
 

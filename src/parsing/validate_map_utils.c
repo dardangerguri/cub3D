@@ -6,7 +6,7 @@
 /*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:19:59 by jhesso            #+#    #+#             */
-/*   Updated: 2023/09/28 12:35:08 by dgerguri         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:39:43 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool	find_wall(char **map, t_vector pos)
 
 	row = pos.y;
 	col = pos.x;
+	if (map[row][0] == '0')
+		return (false);
 	if (map[row][col + 1] == '\0' || map[row][col + 1] == ' ')
 		return (false);
 	if (map[row][col - 1] == '\0' || map[row][col - 1] == ' ')

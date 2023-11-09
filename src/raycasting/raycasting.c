@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 22:10:33 by dardangergu       #+#    #+#             */
-/*   Updated: 2023/11/08 22:40:39 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/11/09 14:54:01 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,10 +164,10 @@ void	raycasting(void *param)
 		}
 		cord.y++;
 	}
-	// draw_map(data);
-	// draw_player(data);
-	// draw_nose(data);
 	draw_rays(data);
+	draw_map(data);
+	draw_player(data);
+	draw_nose(data);
 }
 
 // static void	draw_line(t_player player, t_map_data *data)
