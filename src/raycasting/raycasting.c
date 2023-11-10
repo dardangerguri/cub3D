@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
+/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 22:10:33 by dardangergu       #+#    #+#             */
-/*   Updated: 2023/11/09 22:18:58 by dardangergu      ###   ########.fr       */
+/*   Updated: 2023/11/10 16:59:07 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,6 @@ void	raycasting(void *param)
 	draw_floor_ceiling(data);
 	draw_rays(data);
 	draw_map(data);
-	draw_player(data);
-	draw_nose(data);
+	// draw_player(data);
+	// draw_nose(data);
 }

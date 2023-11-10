@@ -6,7 +6,7 @@
 /*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:40:17 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/10 16:26:33 by dgerguri         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:44:34 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ static void	draw_player_block(t_map_data *data, float x, float y, uint32_t color
 	int	block_x;
 
 	block_y = 0;
-	// printf("X : %f   Y: %f\n", x, y);
-	// while (x > SIZE_B * 10 / 2)
-	// 	x = x - SIZE_B;
-	// while (y > SIZE_B * 6 / 2)
-	// 	y = y - SIZE_B;
-	while (data->pos.x >= 0 && data->pos.y >= 0 && block_y < SIZE_P)
+	while (x > SIZE_B * 20 / 2 )
+		x = x - SIZE_B;
+	while (y > SIZE_B * 10 / 2)
+		y = y - SIZE_B;
+	printf("X : %f   Y: %f\n", x, y);
+	// printf("pos: %f  %f\n", data->pos.x, x);
+	while (x >= 0 && y >= 0 && block_y < SIZE_P)
 	{
 		block_x = 0;
 		while (block_x < SIZE_P)
@@ -41,10 +42,10 @@ void	draw_player(t_map_data *data)
 	int	block_x;
 
 	block_y = 0;
-	while ((block_y * SIZE_B) < HEIGHT_W)
+	while ((block_y * SIZE_B) < 10)
 	{
 		block_x = 0;
-		while ((block_x * SIZE_B) < WIDTH_W)
+		while ((block_x * SIZE_B) < 20)
 		{
 			draw_player_block(data, data->pos.x, data->pos.y, 0xDFFF00);
 			block_x++;
@@ -78,16 +79,16 @@ void	draw_nose(t_map_data *data)
 	}
 }
 
-static void	draw_blocks(t_map_data *data, int x, int y, uint32_t color)
+static void	draw_blocks(t_map_data *data, float x, float y, uint32_t color)
 {
 	int	block_y;
 	int	block_x;
 
 	block_y = 0;
-	while (block_y < SIZE_B - 1 && color)
+	while (block_y < SIZE_B && color)
 	{
 		block_x = 0;
-		while (block_x < SIZE_B - 1)
+		while (block_x < SIZE_B)
 		{
 			mlx_put_pixel(data->mlx_data->window, x + block_x, y + block_y, color);
 			block_x++;
@@ -105,14 +106,18 @@ static void	get_top_left_y_and_x(t_map_data *data, int *y, int *x, int type)
 	pos_y = ((int)data->pos.y / SIZE_B) + 1;
 	if (type == 1)
 	{
-		if (pos_y > 10 / 2)
+		if (pos_y > (int)data->map_size - 5)
+			*y = data->map_size - 10;
+		else if (pos_y > 10 / 2)
 			*y = pos_y - 10 / 2;
 		else
 			*y = 0;
 	}
 	else if (type == 2)
 	{
-		if (pos_x > 20 / 2)
+		if (pos_x > (int)data->longest_line - 10)
+			*x = data->longest_line - 20;
+		else if (pos_x > 20 / 2)
 			*x = pos_x - 20 / 2;
 		else
 			*x = 0;
@@ -182,4 +187,5 @@ void	draw_map(t_map_data *data)
 			y++;
 		}
 	}
+	draw_player(data);
 }

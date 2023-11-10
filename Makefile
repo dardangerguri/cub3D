@@ -6,7 +6,7 @@
 #    By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 19:39:45 by dgerguri          #+#    #+#              #
-#    Updated: 2023/11/09 12:06:10 by dgerguri         ###   ########.fr        #
+#    Updated: 2023/11/10 16:49:13 by dgerguri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,7 +133,7 @@ NAME_B		=	cub3D_bonus
 
 # Name, compiler, and flags
 CC = cc
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -ggdb3
+CFLAGS		=	-Wall -Wextra -Werror #-fsanitize=address -ggdb3
 
 # Directories
 LIBFT_DIR	=	libft/
