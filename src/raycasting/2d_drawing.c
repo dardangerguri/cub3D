@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2d_drawing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
+/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:40:17 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/09 22:27:12 by dardangergu      ###   ########.fr       */
+/*   Updated: 2023/11/10 13:31:41 by dgerguri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	draw_blocks(t_map_data *data, int x, int y, uint32_t color)
 	int	block_x;
 
 	block_y = 0;
-	while (block_y < SIZE_B - 1)
+	while (block_y < SIZE_B)
 	{
 		block_x = 0;
-		while (block_x < SIZE_B - 1)
+		while (block_x < SIZE_B)
 		{
 			mlx_put_pixel(data->mlx_data->window, x + block_x, y + block_y, color);
 			block_x++;
@@ -59,11 +59,11 @@ void draw_map_long(t_map_data *data, int row, int column, int x)
 	uint32_t color;
 
 	get_top_left_y_and_x(data, &y, 0, 1);
-	while (y < 6)
+	while (row < 6)
 	{
 		column = 0;
 		get_top_left_y_and_x(data, 0, &x, 2);
-		while ((size_t)x < 10)
+		while (column < 10)
 		{
 				if (x < (int)ft_strlen(data->map[y]) && data->map[y][x] == '1')
 					color = 0x808080;
@@ -124,6 +124,11 @@ static void	draw_player_block(t_map_data *data, float x, float y, uint32_t color
 	int	block_x;
 
 	block_y = 0;
+	printf("X : %f   Y: %f\n", x, y);
+	while (x > SIZE_B * 10 / 2)
+		x = x - SIZE_B;
+	while (y > SIZE_B * 6 / 2)
+		y = y - SIZE_B;
 	while (data->pos.x >= 0 && data->pos.y >= 0 && block_y < SIZE_P)
 	{
 		block_x = 0;
@@ -147,7 +152,7 @@ void	draw_player(t_map_data *data)
 		block_x = 0;
 		while ((block_x * SIZE_B) < WIDTH_W)
 		{
-			draw_player_block(data, (data->pos.x ), (data->pos.y), 0xDFFF00);
+			draw_player_block(data, data->pos.x, data->pos.y, 0xDFFF00);
 			block_x++;
 		}
 		block_y++;
@@ -164,6 +169,11 @@ void	draw_nose(t_map_data *data)
 	angle.y = data->dir.y;
 	pos.x = data->pos.x + SIZE_P / 2;
 	pos.y = data->pos.y + SIZE_P / 2;
+	// printf("X : %f\n", pos.x);
+	while (pos.x > (SIZE_B * 10 / 2) + 2)
+		pos.x = pos.x - SIZE_B;
+	while (pos.y > (SIZE_B * 6 / 2) + 2)
+		pos.y = pos.y - SIZE_B;
 	i = 0;
 	while (i < 20 && pos.y > -1 && pos.x > -1)
 	{
