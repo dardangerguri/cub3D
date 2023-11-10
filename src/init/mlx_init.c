@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 15:14:20 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/08 18:10:49 by jhesso           ###   ########.fr       */
+/*   Updated: 2023/11/09 22:19:14 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ bool	init_mlx(t_map_data *d)
 		return (error_message(X_MLX));
 	if (!init_textures(d))
 		return (false);
-	if (!(d->mlx_data->window = mlx_new_image(d->mlx_data->mlx, WIDTH_W, 1080)))
+	if (!(d->mlx_data->window = mlx_new_image(d->mlx_data->mlx, WIDTH_W, HEIGHT_W)))
 	{
 		mlx_close_window(d->mlx_data->mlx);
 		return (error_message(X_MLX));

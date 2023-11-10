@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:02:23 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/09 15:23:18 by dgerguri         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:19:21 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@
 # include "../libft/includes/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH_W 1490
-# define HEIGHT_W 1080
+/******************************************************************************/
+/*								    Defines    	 							  */
+/******************************************************************************/
+
+# define WIDTH_W 1370
+# define HEIGHT_W 770
 # define SIZE_B 30 // Size of "block" (wall/empty etc..)?
 # define SIZE_P 5 // Size of player?
 # define PI 3.141592
 # define RAD 0.0174533
-# define PROJ_H 1080
-# define PROJ_V 1490
+# define PROJ_V 1370
+# define PROJ_H 770
+# define SPEED 3
 
 /******************************************************************************/
 /*								Error Messages	 							  */
@@ -76,23 +81,6 @@ typedef struct s_float_v
 	float	x;
 	float	y;
 }	t_float_v;
-
-// typedef struct s_player
-// {
-// 	int		r; // ray count
-// 	int		mapx; // map x?
-// 	int		mapy; // map y?
-// 	int		mapp; // map position?
-// 	int		dof; // depth of field
-// 	float	rayx; // ray x
-// 	float	rayy; // ray y
-// 	float	raya; // ray angle
-// 	float	xo; // x offset
-// 	float	yo; // y offset
-// 	float	playera; // player angle
-// 	float	playerx; // player x
-// 	float	playery; // player y
-// }			t_player;
 
 typedef struct s_ray
 {
@@ -231,5 +219,6 @@ void		print_struct(t_map_data *data);
 void	draw_map(t_map_data *data);
 void	draw_player(t_map_data *data);
 void	draw_nose(t_map_data *data);
+
 
 #endif

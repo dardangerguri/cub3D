@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:24:44 by jhesso            #+#    #+#             */
-/*   Updated: 2023/11/09 15:23:11 by dgerguri         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:44:28 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	starting_point(t_map_data *d, int row, int col, bool *p_start, char c) //mo
 {
 	d->pos.x = col * SIZE_B + ((SIZE_B - SIZE_P) / 2);
 	d->pos.y = row * SIZE_B + ((SIZE_B - SIZE_P) / 2);
+	printf("COL: %d %d\n", col * SIZE_B, (SIZE_B - SIZE_P) / 2);
 	*(p_start) = true;
 	if (c == 'N')
 	{

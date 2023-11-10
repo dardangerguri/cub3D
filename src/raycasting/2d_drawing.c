@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   2d_drawing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:40:17 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/09 16:33:21 by dgerguri         ###   ########.fr       */
+/*   Updated: 2023/11/09 22:27:12 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	draw_blocks(t_map_data *data, int x, int y, uint32_t color)
-{
+{printf("%d\n", x);
 	int	block_y;
 	int	block_x;
 
@@ -32,30 +32,24 @@ static void	draw_blocks(t_map_data *data, int x, int y, uint32_t color)
 
 static void	get_top_left_y_and_x(t_map_data *data, int *y, int *x, int type)
 {
+	int	pos_x;
+	int	pos_y;
+
+	pos_x = ((int)data->pos.x / SIZE_B) + 1;
+	pos_y = ((int)data->pos.y / SIZE_B) + 1;
 	if (type == 1)
 	{
-		*y = 0;
-		if (data->map_size - 33 / 2 > 0)
-		{
-			if (g->components.rows - g->components.player_pos.y > 32 / 2)
-				*y = g->components.player_pos.y - 33 / 2;
-			else
-				*y = g->components.rows - 33;
-		}
+		if (pos_y > 3)
+			*y = pos_y - 3;
+		else
+			*y = 0;
 	}
 	else if (type == 2)
 	{
-		if (g->components.player_pos.x - 60 / 2 > 0)
-		{
-			if (g->components.columns - g->components.player_pos.x > 60 / 2)
-				*x = g->components.player_pos.x - 60 / 2;
-			else
-			{
-				*x = g->components.columns - 60;
-				if (*x < 0)
-					*x = 0;
-			}
-		}
+		if (pos_x > 5)
+			*x = pos_x - 5;
+		else
+			*x = 0;
 	}
 }
 
@@ -65,12 +59,11 @@ void draw_map_long(t_map_data *data, int row, int column, int x)
 	uint32_t color;
 
 	get_top_left_y_and_x(data, &y, 0, 1);
-	while (y < data->map_size)
+	while (y < 6)
 	{
-		// column = 0;
-		x = 0;
+		column = 0;
 		get_top_left_y_and_x(data, 0, &x, 2);
-		while ((size_t)x < data->longest_line)
+		while ((size_t)x < 10)
 		{
 				if (x < (int)ft_strlen(data->map[y]) && data->map[y][x] == '1')
 					color = 0x808080;
@@ -80,25 +73,27 @@ void draw_map_long(t_map_data *data, int row, int column, int x)
 					color = 0x0000FF;
 				else
 					color = 0x000000;
-				draw_blocks(data, x * SIZE_B, y * SIZE_B, color);
+				draw_blocks(data, column * SIZE_B, row * SIZE_B, color);
 			x++;
+			column++;
 		}
-		row++;
 		y++;
+		row++;
 	}
-	return (1);
 }
 
 
 void	draw_map(t_map_data *data)
 {
+	// printf("PLAYER X: %d\n", (int)data->pos.x / SIZE_B);
 	int x;
 	int y;
 	uint32_t color;
 
+	x = 0;
 	y = 0;
-	if (data->longest_line > 10 || data->map_size > 5)
-		draw_map_long(data);
+	if (data->longest_line > 10 || data->map_size > 6)
+		draw_map_long(data, 0, 0, 0);
 		// printf("helo");
 	else
 	{
