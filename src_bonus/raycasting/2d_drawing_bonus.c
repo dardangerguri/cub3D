@@ -6,7 +6,7 @@
 /*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:40:17 by dgerguri          #+#    #+#             */
-/*   Updated: 2025/01/13 00:22:19 by dardangergu      ###   ########.fr       */
+/*   Updated: 2025/01/13 00:37:07 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,41 @@ static void	draw_player_nose(t_map_data *d, float x, float y, float angle)
 	}
 }
 
+static void	adjust_coordinates(t_map_data *d, float *x, float *y)
+{
+	if (d->map_w > 10)
+	{
+		while (*x > SIZE_B * 5 && *x < (d->map_w - 6) * SIZE_B)
+			*x = *x - SIZE_B;
+		if (*x > (d->map_w - 6) * SIZE_B)
+			*x = *x - (d->map_w - 10) * SIZE_B;
+	}
+	if (d->map_h > 6)
+	{
+		while (*y > SIZE_B * 3 && *y < (d->map_h - 4) * SIZE_B)
+			*y = *y - SIZE_B;
+		if (*y > (d->map_h - 4) * SIZE_B)
+			*y = *y - (d->map_h - 6) * SIZE_B;
+	}
+	*x = (*x / SIZE_B) * 32;
+	*y = (*y / SIZE_B) * 32;
+}
+
 static void	draw_player_block(t_map_data *d, float x, float y, uint32_t color)
 {
 	int	block_y;
 	int	block_x;
 
 	block_y = 0;
-	while (x > SIZE_B * 5 && x < (d->map_w - 6) * SIZE_B + (27 / 2))
-		x = x - SIZE_B;
-	while (y > SIZE_B * 3 && y < (d->map_h - 4) * SIZE_B + (27 / 2))
-		y = y - SIZE_B;
-	if (d->map_w > 10 && x > (d->map_w - 6) * SIZE_B + (27 / 2))
-		x = x - d->map_w * SIZE_B + 320;
-	if (d->map_h > 6 && y > (d->map_h - 4) * SIZE_B + (27 / 2))
-		y = y - d->map_h * SIZE_B + 192;
-	while (x >= 0 && y >= 0 && block_y < SIZE_P)
+	adjust_coordinates(d, &x, &y);
+	while (block_y < SIZE_P && x >= 0 && y >= 0)
 	{
 		block_x = 0;
 		while (block_x < SIZE_P)
 		{
-			mlx_put_pixel(d->mlx_data->window, x + block_x, y + block_y, color);
+			if (x + block_x < 320 && y + block_y < 192)
+				mlx_put_pixel(d->mlx_data->window, x + block_x, y + block_y,
+					color);
 			block_x++;
 		}
 		block_y++;
