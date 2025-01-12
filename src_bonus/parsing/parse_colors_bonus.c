@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:14:45 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/12 17:55:39 by jhesso           ###   ########.fr       */
+/*   Updated: 2025/01/12 23:48:24 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

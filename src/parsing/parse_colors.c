@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:14:45 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/12 17:56:48 by jhesso           ###   ########.fr       */
+/*   Updated: 2025/01/12 23:46:23 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	check_digit(char *str, bool *error)
 		{
 			print_error_message(X_WRONG_COLOR_VALUE);
 			*(error) = true;
-			break ;
+			return (1);
 		}
 		str++;
 	}
