@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2d_drawing2_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgerguri <dgerguri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 03:02:47 by jhesso            #+#    #+#             */
-/*   Updated: 2023/11/12 14:51:58 by dgerguri         ###   ########.fr       */
+/*   Updated: 2025/01/13 00:34:57 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	draw_blocks(t_map_data *d, float x, float y, uint32_t color)
 	int	block_x;
 
 	block_y = 0;
-	while (block_y < SIZE_B && color)
+	while (block_y < 32 && color)
 	{
 		block_x = 0;
-		while (block_x < SIZE_B)
+		while (block_x < 32)
 		{
 			mlx_put_pixel(d->mlx_data->window, x + block_x, y + block_y, color);
 			block_x++;
@@ -77,7 +77,7 @@ void	draw_map_big(t_map_data *data, int row, int column, int x)
 				color = get_rgba(96, 96, 96, 255);
 			else
 				color = 0x000000;
-			draw_blocks(data, column * SIZE_B, row * SIZE_B, color);
+			draw_blocks(data, column * 32, row * 32, color);
 			x++;
 			column++;
 		}
@@ -103,7 +103,7 @@ void	draw_map_small(t_map_data *data, int x, int y)
 				color = get_rgba(96, 96, 96, 255);
 			else
 				color = 0x000000;
-			draw_blocks(data, x * SIZE_B, y * SIZE_B, color);
+			draw_blocks(data, x * 32, y * 32, color);
 			x++;
 		}
 		y++;
