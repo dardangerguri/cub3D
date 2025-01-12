@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 20:02:23 by dgerguri          #+#    #+#             */
-/*   Updated: 2023/11/12 17:16:04 by jhesso           ###   ########.fr       */
+/*   Updated: 2025/01/13 00:31:57 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 # define WIDTH_W 1920
 # define HEIGHT_W 1080
-# define SIZE_B 32
+# define SIZE_B 256
 # define SIZE_P 5
 # define PI 3.141592
 # define RAD 0.0174533
