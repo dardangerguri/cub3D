@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhesso <jhesso@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: dardangerguri <dardangerguri@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 22:10:33 by dardangergu       #+#    #+#             */
-/*   Updated: 2023/11/12 16:59:16 by jhesso           ###   ########.fr       */
+/*   Updated: 2025/01/13 14:47:22 by dardangergu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ static void	cast_horizontal(t_map_data *data, t_ray *ray)
 	ray->cotan = 1.0 / tan(deg_to_rad(ray->angle));
 	if (sin(deg_to_rad(ray->angle)) > 0.001)
 	{
-		ray->h_map.y = ((int)player->y / SIZE_B) * SIZE_B - 0.0001;
+		ray->h_map.y = floor(player->y / SIZE_B) * SIZE_B - 0.001;
 		ray->h_map.x = player->x + ((player->y - ray->h_map.y) * ray->cotan);
-		ray->hd.y = (double)-SIZE_B;
+		ray->hd.y = -SIZE_B;
 		ray->hd.x = -ray->hd.y * ray->cotan;
 	}
 	else if (sin(deg_to_rad(ray->angle)) < -0.001)
 	{
-		ray->h_map.y = (int)player->y / SIZE_B * SIZE_B + SIZE_B;
+		ray->h_map.y = floor(player->y / SIZE_B) * SIZE_B + SIZE_B;
 		ray->h_map.x = player->x + ((player->y - ray->h_map.y) * ray->cotan);
-		ray->hd.y = (double)SIZE_B;
+		ray->hd.y = SIZE_B;
 		ray->hd.x = -ray->hd.y * ray->cotan;
 	}
 	else
@@ -60,14 +60,14 @@ static void	cast_vertical(t_map_data *data, t_ray *ray)
 	ray->tan = tan(deg_to_rad(ray->angle));
 	if (cos(deg_to_rad(ray->angle)) < -0.001)
 	{
-		ray->v_map.x = ((int)player->x / SIZE_B) * SIZE_B - 0.0001;
+		ray->v_map.x = floor(player->x / SIZE_B) * SIZE_B - 0.001;
 		ray->v_map.y = player->y + ((player->x - ray->v_map.x) * ray->tan);
 		ray->vd.x = -SIZE_B;
 		ray->vd.y = -ray->vd.x * ray->tan;
 	}
 	else if (cos(deg_to_rad(ray->angle)) > 0.001)
 	{
-		ray->v_map.x = ((int)player->x / SIZE_B) * SIZE_B + SIZE_B;
+		ray->v_map.x = floor(player->x / SIZE_B) * SIZE_B + SIZE_B;
 		ray->v_map.y = player->y + ((player->x - ray->v_map.x) * ray->tan);
 		ray->vd.x = SIZE_B;
 		ray->vd.y = -ray->vd.x * ray->tan;
