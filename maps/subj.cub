@@ -1,10 +1,10 @@
-NO ./textures/wood.png
-SO ./textures/brick.png
-WE ./textures/grass.png
-EA ./textures/wood2.png
+NO ./textures/fire.png
+SO ./textures/fire.png
+WE ./textures/fire.png
+EA ./textures/fire.png
 
-F 220,100,0
-C 225,30,0
+F 15,15,15
+C 180,180,180
 
         1111111111111111111111111
         1000000000110000000000001
