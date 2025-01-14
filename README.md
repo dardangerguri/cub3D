@@ -2,6 +2,8 @@
 
 The cub3D is an engaging game engine that uses ray-casting techniques similar to the classic game Wolfenstein 3D.
 
+<img src="https://github.com/dardangerguri/cub3D/blob/master/cub3d.gif" alt="cub3d"/>
+
 ## About the project
 
 The objective of cub3D is to build a 3D maze environment using ray-casting techniques. The program renders the environment in a window, allowing players to explore and interact with the maze. Developed as part of the 42 school curriculum, cub3D offers developers an opportunity to explore graphics programming and game development concepts.
@@ -21,6 +23,12 @@ The objective of cub3D is to build a 3D maze environment using ray-casting techn
 - Map composition is limited to six possible characters: 0 (empty space), 1 (wall), and N/S/E/W (player's start position and orientation).
 - Map must be surrounded by walls, and other elements of the map must be separated by one or more empty lines.
 - Each type of element in the scene description file can be set in any order and must follow a specific format.
+
+### Bonus
+
+- There is a minimap on the bonus part.
+
+<img src="https://github.com/dardangerguri/cub3D/blob/master/fadingSky.gif" alt="Fading Sky" width="600" height="300"/>
 
 Below is a valid format of the map file: 
 ``` text
